@@ -1,5 +1,6 @@
 import React from "react";
 import { format } from "date-fns";
+import { getCelsius } from "../utils/getCelsius";
 
 export const Forecast = ({ data }) => {
   const weatherList = data.list;
@@ -14,19 +15,26 @@ export const Forecast = ({ data }) => {
   }, {});
 
   return data ? (
-    <div>
-      <h1>Forecast for {data.city.name}</h1>
-      <div>
+    <div className="flex flex-col p-6">
+      <div className="flex justify-center">
+        <h1 className="text-xl font-semibold">Forecast for {data.city.name}</h1>
+      </div>
+      <div className="">
         {Object.keys(groupedForecasts).map((el, i) => {
           return (
-            <div key={i}>
-              <h1>{el}</h1>
-              {groupedForecasts[el].map((d, i) => (
-                <div key={i}>
-                  <h4>{d.dt_txt.split(" ")[1]}</h4>
-                  <span>{d.main.temp}</span>
-                </div>
-              ))}
+            <div className="p-5" key={i}>
+              <h1 className="text-lg">{el}</h1>
+              <div className="flex flex-col lg:flex-row justify-between">
+                {groupedForecasts[el].map((d, i) => (
+                  <div className="" key={i}>
+                    <h4>{d.dt_txt.split(" ")[1]}</h4>
+                    <p className="inline-block">Temperature: </p>
+                    <span className="inline-block">
+                      {getCelsius(d.main.temp).toFixed(2)}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           );
         })}
