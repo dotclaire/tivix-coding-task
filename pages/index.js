@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Forecast } from "../components/Forecast";
 import { Form } from "../components/Form";
 import Head from "next/head";
 import axios from "axios";
@@ -15,17 +16,19 @@ export default function Home() {
   };
 
   const handleSubmit = async event => {
-    event.preventDefault();
-    const API_KEY = "9b5596f8ec5036640bf15d987c734bcd";
+    if (input) {
+      event.preventDefault();
+      const API_KEY = "9b5596f8ec5036640bf15d987c734bcd";
 
-    try {
-      const res = await axios.get(
-        `https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${API_KEY}`
-      );
+      try {
+        const res = await axios.get(
+          `https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${API_KEY}`
+        );
 
-      setData(res.data);
-    } catch (error) {
-      setError(error);
+        setData(res.data);
+      } catch (error) {
+        setError(error);
+      }
     }
   };
 
@@ -38,7 +41,10 @@ export default function Home() {
 
       {error && <div>{error.message}</div>}
       {!error && (
-        <Form handleSubmit={handleSubmit} handleChange={handleChange} />
+        <>
+          <Form handleSubmit={handleSubmit} handleChange={handleChange} />
+          <Forecast data={data} />
+        </>
       )}
     </div>
   );
