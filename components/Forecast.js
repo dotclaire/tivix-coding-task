@@ -23,7 +23,7 @@ export const Forecast = ({ data }) => {
           return (
             <div className="p-5" key={i}>
               <h1 className="text-lg">{el}</h1>
-              <div className="flex justify-between">
+              <div className="flex flex-col lg:flex-row justify-between">
                 {groupedForecasts[el].map((d, i) => (
                   <div className="" key={i}>
                     <h4>{d.dt_txt.split(" ")[1]}</h4>
