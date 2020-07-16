@@ -1,5 +1,6 @@
 import React from "react";
 import { format } from "date-fns";
+import { getCelsius } from "../utils/getCelsius";
 
 export const Forecast = ({ data }) => {
   const weatherList = data.list;
@@ -28,7 +29,9 @@ export const Forecast = ({ data }) => {
                   <div className="" key={i}>
                     <h4>{d.dt_txt.split(" ")[1]}</h4>
                     <p className="inline-block">Temperature: </p>
-                    <span className="inline-block">{d.main.temp}</span>
+                    <span className="inline-block">
+                      {getCelsius(d.main.temp).toFixed(2)}
+                    </span>
                   </div>
                 ))}
               </div>
