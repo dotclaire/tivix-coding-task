@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Forecast } from "../components/Forecast";
 import { Form } from "../components/Form";
 import Head from "next/head";
+import { Header } from "../components/Header";
 import axios from "axios";
 
 export default function Home() {
@@ -42,8 +43,10 @@ export default function Home() {
       {error && <div>{error.message}</div>}
       {!error && (
         <div className="container mx-auto">
-          <Form handleSubmit={handleSubmit} handleChange={handleChange} />
-          {data && <Forecast data={data} />}
+          <div>
+            <Header handleSubmit={handleSubmit} handleChange={handleChange} />
+            {data && <Forecast data={data} />}
+          </div>
         </div>
       )}
     </div>
