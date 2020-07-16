@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import { Forecast } from "../components/Forecast";
 import { Form } from "../components/Form";
 import Head from "next/head";
 import axios from "axios";
@@ -38,7 +39,10 @@ export default function Home() {
 
       {error && <div>{error.message}</div>}
       {!error && (
-        <Form handleSubmit={handleSubmit} handleChange={handleChange} />
+        <>
+          <Form handleSubmit={handleSubmit} handleChange={handleChange} />
+          <Forecast data={data} />
+        </>
       )}
     </div>
   );
