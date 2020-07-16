@@ -43,7 +43,7 @@ export default function Home() {
       {!error && (
         <>
           <Form handleSubmit={handleSubmit} handleChange={handleChange} />
-          <Forecast data={data} />
+          {data && <Forecast data={data} />}
         </>
       )}
     </div>

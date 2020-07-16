@@ -17,17 +17,17 @@ export const Forecast = ({ data }) => {
     <div>
       <h1>Forecast for {data.city.name}</h1>
       <div>
-        {Object.keys(groupedForecasts).map(el => {
+        {Object.keys(groupedForecasts).map((el, i) => {
           return (
-            <>
+            <div key={i}>
               <h1>{el}</h1>
-              {groupedForecasts[el].map(time => (
-                <div>
-                  <h4>{time.dt_txt.split(" ")[1]}</h4>
-                  <span>{time.main.temp}</span>
+              {groupedForecasts[el].map((d, i) => (
+                <div key={i}>
+                  <h4>{d.dt_txt.split(" ")[1]}</h4>
+                  <span>{d.main.temp}</span>
                 </div>
               ))}
-            </>
+            </div>
           );
         })}
       </div>
