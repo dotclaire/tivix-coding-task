@@ -41,10 +41,10 @@ export default function Home() {
 
       {error && <div>{error.message}</div>}
       {!error && (
-        <>
+        <div className="container mx-auto">
           <Form handleSubmit={handleSubmit} handleChange={handleChange} />
           {data && <Forecast data={data} />}
-        </>
+        </div>
       )}
     </div>
   );
