@@ -20,10 +20,10 @@ export const Forecast = ({ data }) => {
         {Object.keys(groupedForecasts).map(el => {
           return (
             <>
-              <div>{el}</div>
+              <h1>{el}</h1>
               {groupedForecasts[el].map(time => (
                 <div>
-                  <p>{time.dt_txt.split(" ")[1]}</p>
+                  <h4>{time.dt_txt.split(" ")[1]}</h4>
                   <span>{time.main.temp}</span>
                 </div>
               ))}
