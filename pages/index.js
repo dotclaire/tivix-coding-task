@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import { Forecast } from "../components/Forecast";
-import { Form } from "../components/Form";
 import Head from "next/head";
 import { Header } from "../components/Header";
 import axios from "axios";
