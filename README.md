@@ -16,7 +16,7 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 Screenshot from the app:
 
-<img src="./public/weather-app-screenshot.png" />
+<img src="./public/weather-app-screenshot.png" alt="App screenshot" />
 
 ## Learn More
 
