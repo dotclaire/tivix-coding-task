@@ -1,3 +1,4 @@
+import { Carousel } from "react-responsive-carousel";
 import React from "react";
 import { format } from "date-fns";
 import { getCelsius } from "../utils/getCelsius";
@@ -19,18 +20,18 @@ export const Forecast = ({ data }) => {
       <div className="flex justify-center">
         <h1 className="text-xl font-semibold">Forecast for {data.city.name}</h1>
       </div>
-      <div className="">
+      <Carousel showThumbs={false}>
         {Object.keys(groupedForecasts).map((el, i) => {
           return (
-            <div className="p-5" key={i}>
-              <h1 className="text-lg">{el}</h1>
+            <div className="bg-primary p-6" key={i}>
+              <h1 className="text-lg text-black">{el}</h1>
               <div className="flex flex-col lg:flex-row justify-between">
                 {groupedForecasts[el].map((d, i) => (
-                  <div className="" key={i}>
-                    <h4>{d.dt_txt.split(" ")[1]}</h4>
-                    <p className="inline-block">Temperature: </p>
-                    <span className="inline-block">
+                  <div key={i}>
+                    <h4 className="text-black">{d.dt_txt.split(" ")[1]}</h4>
+                    <span className="inline-block text-black">
                       {getCelsius(d.main.temp).toFixed(2)}
+                      &#8451;
                     </span>
                   </div>
                 ))}
@@ -38,7 +39,7 @@ export const Forecast = ({ data }) => {
             </div>
           );
         })}
-      </div>
+      </Carousel>
     </div>
   ) : null;
 };
