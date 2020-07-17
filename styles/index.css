@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-button:focus {
-  outline: none;
-}
-
 .carousel .control-next.control-arrow:before {
   border-left-color: #000 !important;
 }
@@ -16,4 +12,8 @@ button:focus {
 
 .carousel .control-dots .dot {
   background: #000 !important;
+}
+
+.carousel .carousel-status {
+  display: none;
 }
