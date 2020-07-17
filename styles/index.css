@@ -13,3 +13,7 @@
 .carousel .control-dots .dot {
   background: #000 !important;
 }
+
+.carousel .carousel-status {
+  display: none;
+}
