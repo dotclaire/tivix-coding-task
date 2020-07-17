@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-button:focus {
-  outline: none;
-}
-
 .carousel .control-next.control-arrow:before {
   border-left-color: #000 !important;
 }
