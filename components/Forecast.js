@@ -29,7 +29,7 @@ export const Forecast = ({ error, data }) => {
       <Carousel showThumbs={false}>
         {Object.keys(groupedForecasts).map((el, i) => {
           return (
-            <div className="bg-primary h-full pt-6 pb-10 px-6" key={i}>
+            <div className="bg-primary h-full pt-6 pb-10 px-8" key={i}>
               <h1 className="pb-4 text-lg text-black">{el}</h1>
               <div className="flex flex-col lg:flex-row justify-between">
                 {groupedForecasts[el].map((d, i) => {
