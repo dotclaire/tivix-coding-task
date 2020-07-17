@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Forecast } from "../components/Forecast";
 import { Form } from "../components/Form";
@@ -17,19 +17,18 @@ export default function Home() {
   };
 
   const handleSubmit = async event => {
-    if (input) {
-      event.preventDefault();
-      const API_KEY = "9b5596f8ec5036640bf15d987c734bcd";
+    event.preventDefault();
+    const API_KEY = "9b5596f8ec5036640bf15d987c734bcd";
 
-      try {
-        const res = await axios.get(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${API_KEY}`
-        );
+    try {
+      const res = await axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${input}&appid=${API_KEY}`
+      );
 
-        setData(res.data);
-      } catch (error) {
-        setError(error);
-      }
+      setData(res.data);
+      setError("");
+    } catch (error) {
+      setError(error);
     }
   };
 
@@ -40,15 +39,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {error && <div>{error.message}</div>}
-      {!error && (
-        <div className="container mx-auto">
-          <div>
-            <Header handleSubmit={handleSubmit} handleChange={handleChange} />
-            {data && <Forecast data={data} />}
-          </div>
+      <div className="container mx-auto">
+        <div>
+          <Header
+            error={error}
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+          />
+          {data && <Forecast error={error} data={data} />}
         </div>
-      )}
+      </div>
     </div>
   );
 }
