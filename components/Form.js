@@ -12,7 +12,7 @@ export const Form = ({ error, handleSubmit, handleChange }) => {
           onChange={handleChange}
         />
         <button className="bg-secondary focus:outline-none hover:bg-hover text-white font-bold py-2 px-4 rounded-full">
-          Get Weather
+          Get Forecasts
         </button>
       </form>
       {error && (
